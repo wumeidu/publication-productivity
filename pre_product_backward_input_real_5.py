@@ -34,16 +34,9 @@ from keras.models import load_model
 
 def build_model():
     model = models.Sequential()
-    # model.add(layers.Conv1D(128, 5, activation='relu', input_shape=(149, 1)))
-    # model.add(layers.MaxPooling1D(5))
-    #   model.add(SimpleRNN(32, input_shape=(8, 1)))  # , return_sequences=True)
     model.add(LSTM(32, input_shape=(12, 1)))
-    # model.add(Dropout(0.2))  # 被遗忘的比例
-    #    model.add(SimpleRNN(32))
-    # model.add(layers.Dense(32  ))
     model.add(layers.Dense(1))
-    # model.add(Activation('linear'))
-    model.add(Activation('relu'))  # 激活因子
+    model.add(Activation('relu')) 
     model.compile(optimizer='rmsprop', loss='mse', metrics=['accuracy'])
     model.summary()
     return model
@@ -57,7 +50,6 @@ Route = r'D:\dududu\model_related\dblp_data\extracted_data\dblp-rels-retag-2000-
 
 files = open(Route, 'r', encoding='UTF-8')
 
-# for i in range (10):
 while 1:
     lin = files.readline().strip()
     if lin != '':
@@ -85,7 +77,6 @@ raw_data_2 = raw_data_1
 
 temp = []
 for ii in range(0, len(raw_data_1[-1])):
-    # if raw_data_1[-1][ii]!=0:
     temp.append(raw_data_1[-1][ii])
 
 print('mean score', average(temp))
@@ -102,7 +93,7 @@ for ii in range(0, len(raw_data_2)):
 
     raw_data.append(temp)
 
-random.shuffle(raw_data)  # raw_data是打乱后的raw_data_2
+random.shuffle(raw_data) 
 
 print(len(raw_data))
 
@@ -117,9 +108,9 @@ for ii in range(0, num_tran_samples):
     temp = list(temp)
 
     temp_1 = temp[:-1]
-    train_data.append(temp_1)  # 前12列数据作为输入，输出为第13列的预测值
+    train_data.append(temp_1)
 
-    train_targets.append(temp[-1])  # 第13列的真实值
+    train_targets.append(temp[-1])
 
 train_data = np.array(train_data, dtype=float)
 
@@ -173,7 +164,6 @@ font1 = {'family': 'Times New Roman',
          }
 plt.xlabel('Epochs', font1)
 plt.ylabel('Accuracy', font1)
-# plt.title('Training and validation accuracy')
 plt.legend(loc='best', prop=font1)
 pp = PdfPages('D:\dududu\model_related\deep_learning_test\model_acc_history_15.pdf')
 pp.savefig()
