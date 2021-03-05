@@ -18,12 +18,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 from keras.models import load_model
 
+# Testing data set
 Route = r'D:\dududu\model_related\dblp_data\extracted_data\dblp-rels-retag-1988-2019_1951_hyper_degree_squence_observe_at_2000.txt'
 
 files = open(Route, 'r', encoding='UTF-8')
 raw_data_null = []
 raw_data_0 = []
 
+# Filter testing data set
 while 1:
     lin = files.readline().strip()
     if lin != '':
@@ -33,7 +35,7 @@ while 1:
         for t1 in data:
             temp.append(int(t1))
 
-        if int(sum(temp[0:13])) > 60 or int(sum(temp[0:-2])) > 180:
+        if int(sum(temp[0:13])) > 15:
             continue
 
         data_1 = [int(data[0])]
@@ -59,11 +61,9 @@ for kk in range(0, len(raw_data_null)):
 
     test_targets.append(raw_data_null[kk][12])
 
-print(raw_data_null[40])
-print(test_data[40])
-print(test_targets[40])
 test_data = np.array(test_data, dtype=float)
 
+# Get the predictions for the next one year by the LSTM model that has been trained in file "train_publication_productivity_LSTM_model.py"
 model = load_model('D:\dududu\model_related\deep_learning_test\model_test_history_15.h5')
 y_predict = model.predict(test_data, batch_size=5)
 
@@ -71,7 +71,7 @@ count = 0
 count_1 = 0
 count_2 = 0
 
-
+# Generate a random number that follows a Powerlaw distribution.
 # ================================== Powerlaw Function ==========================
 
 
@@ -84,6 +84,7 @@ def test_fun2(last_num):
 # ================================== Powerlaw Function ===========================
 
 
+# Modify the prediction.
 # ================================== modify ======================================
 
 for si in range(0, len(y_predict)):
@@ -108,6 +109,7 @@ for ii in range(len(test_targets)):
 
 fout.close()
 
+# Predict the publication productivity for the next 2 to 18 years
 for ll in range(2, len(raw_data_null[0]) - 11):
     test_data_1 = test_data
     test_data = []
