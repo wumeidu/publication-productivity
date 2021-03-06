@@ -7,15 +7,15 @@ tagg=1;
 col=6;
 row=3;
 figure(1);
-pdf_name='model-distr-another-2000';
+pdf_name='model-distr-2000';
 
 set(gcf,'position',[10,50,750,370]);
 
-for i=0:1:11
+for i=0:1:17
 
-    year=2008+i
-    fn=['D:\dududu\dblp_data\predict\LSTM_another\dblp-rels-retag-test-predict-',num2str(year),'_curr.txt'];
-    fn_true=['D:\dududu\dblp_data\predict\LSTM_another\dblp-rels-retag-test-ture-',num2str(year),'_curr.txt'];
+    year=2001+i
+    fn=['D:\dblp-rels-retag-test-predict-',num2str(year),'_curr_history_0.txt'];
+    fn_true=['D:\dblp-rels-retag-test-ture-',num2str(year),'_curr_history_0.txt'];
     
     fid=importdata(fn);
     fid_true=importdata(fn_true);
