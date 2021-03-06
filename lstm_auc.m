@@ -1,19 +1,19 @@
 clear
 tagg=1
 start_y_sample=1950
-start_y=1988  %1990年论文的不算time interval
+start_y=1988
 end_y=[2001:1:2019];
-%end_y=[2010:1:2018];
+
 beta=-.00000
 gamma=20
 col=6
 row=3
-predict_thresd=15%读入要预测的节点
+predict_thresd=15
 hyper_degrees=[1:predict_thresd];
 s2='predict_lstm_2001_2019_auc_compare'
-%读入hazard矩阵 
+
 set(gcf,'unit','normalized','position',[0.4,0.4,0.37 ,0.37])
-for ss=2001:2019 %2001:2009
+for ss=2001:2019
     fn=['D:\dududu\dblp_data\predict\LSTM2\dblp-rels-retag-test-predict-annually-',num2str(ss),'_curr_history_0.txt'];
     fn_true=['D:\dududu\dblp_data\predict\LSTM2\dblp-rels-retag-test-ture-annually-',num2str(ss),'_curr_history_0.txt'];
     
@@ -81,19 +81,13 @@ for ss=2001:2019 %2001:2009
     plot( hyper_degrees ,  auc_v, 'o','LineWidth',0.001,'markersize',1.8 , 'MarkerFaceColor',[0.85,0.33,0.01], 'MarkeredgeColor',[0.85,0.33,0.01])
     hold on
    
-%    [rho,pval]= corr(predict_hyperdegrees ,nodes_set_hyperdegree,'Type', 'Pearson');
-    %plot(intial_hyperdegree_value,    intial_hyperdegree_value,   'g')
-     ss2=ss-2000;%ss;
+     ss2=ss-2000;
      s3=['y=',num2str(end_y(ss2) ) ];
      text((mod(tagg-1,col))/col+3, (ceil(1/col))/row -0.12     , s3 ,'FontSize', 9, 'Fontname', 'Times New Roman' )
-%     s3=['r=',num2str(round(rho,3))];
-%     text((mod(tagg-1,col))/col+3,1-(ceil(1/col))/row+max(predict_average_hyperdegree)-13    , s3 ,'FontSize', 10, 'Fontname', 'Times New Roman' )
-%     
-%     [rho,pval]= corr(predict_hyperdegrees ,nodes_set_hyperdegree,'Type', 'Spearman');
+
      s3=['AUC=',num2str(round(mean(mean_auc),3)) ];
      text((mod(ss-1,col))/col+3,  0.05 +(ceil(1/col))/row   , s3 ,'FontSize', 9, 'Fontname', 'Times New Roman' )
-%     
-%     hold off
+
     tagg=tagg+1
     
     
