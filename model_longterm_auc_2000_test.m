@@ -2,20 +2,19 @@ clear
 tagg=1
 start_y_sample=1950
 start_y=1995
-end_y=[2008:1:2019];
-%end_y=[2010:1:2018];
+end_y=[2001:1:2018];
 beta=-.00000
 gamma=20
 col=6
 row=3
 predict_thresd=15
 hyper_degrees=[1:predict_thresd];
-s2='model-longterm-auc-another-2000'
+s2='model-longterm-auc-2000'
 
 set(gcf,'unit','normalized','position',[0.1,0.1,0.38 ,0.35])
-for ss=2008:2019
-    fn=['D:\dududu\dblp_data\predict\LSTM_another\dblp-rels-retag-test-predict-',num2str(ss),'_curr.txt'];
-    fn_true=['D:\dududu\dblp_data\predict\LSTM_another\dblp-rels-retag-test-ture-',num2str(ss),'_curr.txt'];
+for ss=2001:2018
+    fn=['D:\dblp-rels-retag-test-predict-',num2str(ss),'_curr_history_0.txt'];
+    fn_true=['D:\dblp-rels-retag-test-ture-',num2str(ss),'_curr_history_0.txt'];
     
     fid =importdata(fn);
     fid_1 =importdata(fn_true);
@@ -23,7 +22,7 @@ for ss=2008:2019
     nodes_ture_hyperdegree_0=round(fid_1);
     nodes_predit_hyperdegree_0= round(fid);
     
-    fn_2=['D:\dududu\dblp_data\coauthor_evolu_data\dblp-rels-retag-1995-2019_1951_hyper_degree_squence_start_at_2000.txt'];
+    fn_2=['D:\dblp-rels-retag-1988-2019_1951_hyper_degree_squence_observe_at_2000.txt'];
     nodes_ture_hyperdegree_o1 =importdata(fn_2);
     nodes_ture_hyperdegree_o1=round(nodes_ture_hyperdegree_o1);
     nodes_ture_hyperdegree_o=sum(nodes_ture_hyperdegree_o1(:,1:ss-start_y+1),2);
@@ -81,7 +80,7 @@ for ss=2008:2019
     plot( hyper_degrees ,  auc_v, 'o','LineWidth',0.001,'markersize',1.8 , 'MarkerFaceColor',[0.85,0.33,0.01], 'MarkeredgeColor',[0.85,0.33,0.01])
     hold on
    
-     ss2=ss-2007;
+     ss2=ss-2000;
      s3=['y=',num2str(end_y(ss2) ) ];
      text((mod(tagg-1,col))/col+3, (ceil(1/col))/row -0.12     , s3 ,'FontSize', 8, 'Fontname', 'Times New Roman' )
 
