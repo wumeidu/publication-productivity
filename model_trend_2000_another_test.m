@@ -6,7 +6,7 @@ fn =['D:\dududu\dblp_data\coauthor_evolu_data\dblp-rels-retag-1995-2019_1951_hyp
 fid =importdata(fn); 
    
 hyperdegrees_null_1= fid;
-hyperdegrees_null=sum(hyperdegrees_null_1(:,1:13),2);    % sum(a,dim):dim=1/2 按列/行求和 9改成13
+hyperdegrees_null=sum(hyperdegrees_null_1(:,1:13),2);
 hyperdegrees_null=hyperdegrees_null(find(hyperdegrees_null<=predict_thresd));
 
 intial_hyperdegree_value=[1:1:predict_thresd];
@@ -21,31 +21,25 @@ beta=-.00000
 gamma=20
 col=6
 row=3
- %13 %读入要预测的节点
-% s2='trend_RNN_20010_2018'
+
 
 s2='model-trend-another-2000'
 
-%读入hazard矩阵 
+%璇诲叆hazard鐭╅樀 
 set(gcf,'unit','normalized','position',[0.1,0.1,0.37 ,0.37])
 for ss=2008:2019%7:15%
     fn=['D:\dududu\dblp_data\predict\LSTM_another\dblp-rels-retag-test-predict-', num2str(ss),'_curr.txt'];
     fn_1=['D:\dududu\dblp_data\predict\LSTM_another\dblp-rels-retag-test-ture-', num2str(ss),'_curr.txt'];
-%     
-%    fn=['E:\gaoshu1_2016\dblp-rels-retag-test-predict-ac-', num2str(ss),'_curr.txt'];
-%    fn_1=['E:\gaoshu1_2016\dblp-rels-retag-test-ture-ac-', num2str(ss),'_curr.txt'];
+  
     
-%      fn=['E:\dl_productivity_predict\dblp-rels-retag-test-predict-', num2str(ss),'_curr_aa.txt'];
-%      fn_1=['E:\dl_productivity_predict\dblp-rels-retag-test-ture-', num2str(ss),'_curr_aa.txt'];    
-    
-    fid =importdata(fn); % 5869
+    fid =importdata(fn);
     fid_1 =importdata(fn_1);
     
-    fid =fid(:,1);  % 5869
-    fid_1 =fid_1(:,1); % 5869
+    fid =fid(:,1);
+    fid_1 =fid_1(:,1);
    
-    predict_hyperdegrees= round(fid);   % 取整 % 5869
-    nodes_set_hyperdegree= round(fid_1);% 5869
+    predict_hyperdegrees= round(fid);  
+    nodes_set_hyperdegree= round(fid_1);
 
      
     average_hyperdegree=0;
@@ -61,8 +55,6 @@ for ss=2008:2019%7:15%
         predict_average_hyperdegree(ii)=    mean(predict_hyperdegrees (find(hyperdegrees_null== intial_hyperdegree_value(ii) )));
 
     end
-
-   
 
     subplot('Position',[(mod(tagg-1,col))/col+0.03,1-(ceil(tagg/col))/row+0.05,0.75/col,0.75/row])
     set(gca,'box','on','LineWidth',0.6)
