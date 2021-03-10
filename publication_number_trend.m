@@ -2,7 +2,7 @@ clear
 tagg=1
 predict_thresd=15
 
-fn =['D:\dblp-rels-retag-1988-2019_1951_hyper_degree_squence_observe_at_2000.txt'];
+fn =['dblp-rels-retag-1988-2019_1951_hyper_degree_squence_observe_at_2000.txt'];
 fid =importdata(fn); 
    
 hyperdegrees_null_1= fid;
@@ -29,7 +29,7 @@ s2='publication-number-trend'
 set(gcf,'unit','normalized','position',[0.1,0.1,0.37 ,0.37])
 for ss=2001:2018%7:15%
     fn=['D:\dblp-rels-retag-test-predict-', num2str(ss),'_curr_history_15.txt'];
-    fn_1=['D:\dblp-rels-retag-test-ture-', num2str(ss),'_curr_history_15.txt'];
+    fn_1=['D:\dblp-rels-retag-test-true-', num2str(ss),'_curr_history_15.txt'];
   
     
     fid =importdata(fn);
