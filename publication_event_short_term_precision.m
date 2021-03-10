@@ -14,8 +14,8 @@ s2='predict_lstm_2001_2019_auc_compare'
 
 set(gcf,'unit','normalized','position',[0.4,0.4,0.37 ,0.37])
 for ss=2001:2019
-    fn=['D:\dududu\dblp_data\predict\LSTM2\dblp-rels-retag-test-predict-annually-',num2str(ss),'_curr_history_0.txt'];
-    fn_true=['D:\dududu\dblp_data\predict\LSTM2\dblp-rels-retag-test-ture-annually-',num2str(ss),'_curr_history_0.txt'];
+    fn=['D:\dblp-rels-retag-test-predict-annually-',num2str(ss),'_curr_history_15.txt'];
+    fn_true=['D:\dblp-rels-retag-test-ture-annually-',num2str(ss),'_curr_history_15.txt'];
     
     fid =importdata(fn);
     fid_1 =importdata(fn_true);
