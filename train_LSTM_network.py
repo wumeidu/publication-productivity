@@ -48,7 +48,7 @@ raw_data_null = []
 raw_data_0 = []
 
 # A data set that used to train a LSTM model.
-Route = r'D:\dududu\model_related\dblp_data\extracted_data\dblp-rels-retag-2000-2019_1951_hyper_degree_squence_observe_at_2000.txt'
+Route = r'D:\dblp-rels-retag-2000-2019_1951_hyper_degree_squence_observe_at_2000.txt'
 
 files = open(Route, 'r', encoding='UTF-8')
 
@@ -115,7 +115,7 @@ num_epochs = 20
 acc_histories = []
 val_acc_histories = []
 
-# 4-fold cross validation
+# the fourfold cross validation
 k = 4
 num_val_samples = len(train_data) // k
 for i in range(k):
@@ -144,7 +144,7 @@ for i in range(k):
     val_acc_histories.append(val_acc)
 
 # save the model that have been trained.
-model.save('D:\dududu\model_related\deep_learning_test\model_test_history_15.h5')
+model.save('D:\LSTM_model.h5')
 
 # get mean prediction accuracy 
 average_acc_history = [
@@ -163,7 +163,7 @@ font1 = {'family': 'Times New Roman',
 plt.xlabel('Epochs', font1)
 plt.ylabel('Accuracy', font1)
 plt.legend(loc='best', prop=font1)
-pp = PdfPages('D:\dududu\model_related\deep_learning_test\model_acc_history_15.pdf')
+pp = PdfPages('D:\model_accuracy.pdf')
 pp.savefig()
 plt.show()
 pp.close()
