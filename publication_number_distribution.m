@@ -14,8 +14,8 @@ set(gcf,'position',[10,50,750,370]);
 for i=0:1:17
 
     year=2001+i
-    fn=['D:\dblp-rels-retag-test-predict-',num2str(year),'_curr_history_15.txt'];
-    fn_true=['D:\dblp-rels-retag-test-ture-',num2str(year),'_curr_history_15.txt'];
+    fn=['dblp-rels-retag-test-predict-',num2str(year),'_curr_history_15.txt'];
+    fn_true=['\dblp-rels-retag-test-true-',num2str(year),'_curr_history_15.txt'];
     
     fid=importdata(fn);
     fid_true=importdata(fn_true);
@@ -62,4 +62,4 @@ for i=0:1:17
     tagg=tagg+1;
 end
 
-saveas(gcf,['D:\',pdf_name,'.pdf'])
+saveas(gcf,[pdf_name,'.pdf'])
