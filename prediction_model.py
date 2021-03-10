@@ -19,7 +19,7 @@ import numpy as np
 from keras.models import load_model
 
 # Testing data set
-Route = r'D:\dblp-rels-retag-1988-2019_1951_hyper_degree_squence_observe_at_2000.txt'
+Route = r'dblp-rels-retag-1988-2019_1951_hyper_degree_squence_observe_at_2000.txt'
 
 files = open(Route, 'r', encoding='UTF-8')
 raw_data_null = []
@@ -64,7 +64,7 @@ for kk in range(0, len(raw_data_null)):
 test_data = np.array(test_data, dtype=float)
 
 # Get the predictions for the next one year by the LSTM model that has been trained in file "train_publication_productivity_LSTM_model.py"
-model = load_model('D:\model.h5')
+model = load_model('model.h5')
 y_predict = model.predict(test_data, batch_size=5)
 
 count = 0
@@ -95,14 +95,14 @@ for si in range(0, len(y_predict)):
 # ================================== modify ======================================
 
 
-ss = 'D://dblp-rels-retag-test-predict-' + str(1 + 2000) + '_curr_history_15.txt'
+ss = 'dblp-rels-retag-test-predict-' + str(1 + 2000) + '_curr_history_15.txt'
 fout = open(ss, 'w')
 for ii in range(len(y_predict)):
     fout.write('%f\n' % y_predict[ii][0])
 
 fout.close()
 
-ss = 'D://dblp-rels-retag-test-ture-' + str(1 + 2000) + '_curr_history_15.txt'
+ss = 'dblp-rels-retag-test-true-' + str(1 + 2000) + '_curr_history_15.txt'
 fout = open(ss, 'w')
 for ii in range(len(test_targets)):
     fout.write('%f\n' % test_targets[ii])
@@ -139,14 +139,14 @@ for ll in range(2, len(raw_data_null[0]) - 11):
     # ================================== modify ======================================
 
 
-    ss = 'D://dblp-rels-retag-test-predict-' + str(ll + 2000) + '_curr_history_15.txt'
+    ss = 'dblp-rels-retag-test-predict-' + str(ll + 2000) + '_curr_history_15.txt'
     fout = open(ss, 'w')
     for ii in range(len(y_predict)):
         fout.write('%f\n' % y_predict[ii][0])
 
     fout.close()
 
-    ss = 'D://dblp-rels-retag-test-ture-' + str(ll + 2000) + '_curr_history_15.txt'
+    ss = 'dblp-rels-retag-test-true-' + str(ll + 2000) + '_curr_history_15.txt'
     fout = open(ss, 'w')
     for ii in range(len(test_targets)):
         fout.write('%f\n' % test_targets[ii])
