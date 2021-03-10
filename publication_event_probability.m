@@ -1,7 +1,7 @@
 clear
 tagg=1
 start_y_sample=1950
-start_y=1995
+start_y=1988
 end_y=[2001:1:2018];
 beta=-.00000
 gamma=20
@@ -13,8 +13,8 @@ s2='model-longterm-auc-2000'
 
 set(gcf,'unit','normalized','position',[0.1,0.1,0.38 ,0.35])
 for ss=2001:2018
-    fn=['D:\dblp-rels-retag-test-predict-',num2str(ss),'_curr_history_0.txt'];
-    fn_true=['D:\dblp-rels-retag-test-ture-',num2str(ss),'_curr_history_0.txt'];
+    fn=['D:\dblp-rels-retag-test-predict-',num2str(ss),'_curr_history_15.txt'];
+    fn_true=['D:\dblp-rels-retag-test-ture-',num2str(ss),'_curr_history_15.txt'];
     
     fid =importdata(fn);
     fid_1 =importdata(fn_true);
