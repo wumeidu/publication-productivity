@@ -2,7 +2,7 @@ clear
 tagg=1
 predict_thresd=15
 
-fn =['D:\dududu\dblp_data\coauthor_evolu_data\dblp-rels-retag-1988-2019_1951_hyper_degree_squence_start_at_2000.txt'];
+fn =['D:\dblp-rels-retag-1988-2019_1951_hyper_degree_squence_observe_at_2000.txt'];
 fid =importdata(fn); 
    
 hyperdegrees_null_1= fid;
@@ -23,13 +23,13 @@ col=6
 row=3
 
 
-s2='model-trend-2000'
+s2='publication-number-trend'
 
 
 set(gcf,'unit','normalized','position',[0.1,0.1,0.37 ,0.37])
 for ss=2001:2018%7:15%
-    fn=['D:\dblp-rels-retag-test-predict-', num2str(ss),'_curr_history_0.txt'];
-    fn_1=['D:\dblp-rels-retag-test-ture-', num2str(ss),'_curr_history_0.txt'];
+    fn=['D:\dblp-rels-retag-test-predict-', num2str(ss),'_curr_history_15.txt'];
+    fn_1=['D:\dblp-rels-retag-test-ture-', num2str(ss),'_curr_history_15.txt'];
   
     
     fid =importdata(fn);
@@ -75,7 +75,7 @@ for ss=2001:2018%7:15%
    
     [rho,pval]= corr(predict_hyperdegrees ,nodes_set_hyperdegree,'Type', 'Pearson');
     
-    ss2=ss-2007;
+    ss2=ss-2000;
     s3=['y=',num2str(end_y(ss2)) ];
     text((mod(tagg-1,col))/col+2,( 1-(ceil(1/col))/row+30-11 )*45/30   , s3 ,'FontSize', 8, 'Fontname', 'Times New Roman' )
     s3=['s_1=',num2str(round(rho,3))];
