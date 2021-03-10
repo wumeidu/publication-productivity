@@ -28,8 +28,8 @@ s2='publication-number-trend'
 
 set(gcf,'unit','normalized','position',[0.1,0.1,0.37 ,0.37])
 for ss=2001:2018%7:15%
-    fn=['D:\dblp-rels-retag-test-predict-', num2str(ss),'_curr_history_15.txt'];
-    fn_1=['D:\dblp-rels-retag-test-true-', num2str(ss),'_curr_history_15.txt'];
+    fn=['dblp-rels-retag-test-predict-', num2str(ss),'_curr_history_15.txt'];
+    fn_1=['dblp-rels-retag-test-true-', num2str(ss),'_curr_history_15.txt'];
   
     
     fid =importdata(fn);
@@ -94,4 +94,4 @@ for ss=2001:2018%7:15%
     
 end
 
-saveas(gcf,['D:\',s2,'.pdf'])
+saveas(gcf,[s2,'.pdf'])
