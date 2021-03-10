@@ -7,15 +7,15 @@ tagg=1;
 col=6;
 row=3;
 figure(1);
-pdf_name='model-distr-2000';
+pdf_name='publication-number-distribution';
 
 set(gcf,'position',[10,50,750,370]);
 
 for i=0:1:17
 
     year=2001+i
-    fn=['D:\dblp-rels-retag-test-predict-',num2str(year),'_curr_history_0.txt'];
-    fn_true=['D:\dblp-rels-retag-test-ture-',num2str(year),'_curr_history_0.txt'];
+    fn=['D:\dblp-rels-retag-test-predict-',num2str(year),'_curr_history_15.txt'];
+    fn_true=['D:\dblp-rels-retag-test-ture-',num2str(year),'_curr_history_15.txt'];
     
     fid=importdata(fn);
     fid_true=importdata(fn_true);
@@ -47,7 +47,7 @@ for i=0:1:17
     set(gca,'FontSize',16);
     
     
-    sample_size = round(length(pred_data)* .5);
+    sample_size = round(length(pred_data)* .2);
     [h,p] = kstest2(pred_data(1:sample_size), true_data(1:sample_size), 'Alpha',0.05  );
     s4=['y=',num2str(year)];
     text((mod(tagg-1,col))/col+1.25, (1-(ceil(1/col))/row+30-18)*45/40    , s4 ,'FontSize', 7, 'Fontname', 'Times New Roman' )
