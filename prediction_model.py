@@ -19,7 +19,7 @@ import numpy as np
 from keras.models import load_model
 
 # Testing data set
-Route = r'D:\dududu\model_related\dblp_data\extracted_data\dblp-rels-retag-1988-2019_1951_hyper_degree_squence_observe_at_2000.txt'
+Route = r'D:\dblp-rels-retag-1988-2019_1951_hyper_degree_squence_observe_at_2000.txt'
 
 files = open(Route, 'r', encoding='UTF-8')
 raw_data_null = []
@@ -64,14 +64,14 @@ for kk in range(0, len(raw_data_null)):
 test_data = np.array(test_data, dtype=float)
 
 # Get the predictions for the next one year by the LSTM model that has been trained in file "train_publication_productivity_LSTM_model.py"
-model = load_model('D:\dududu\model_related\deep_learning_test\model_test_history_15.h5')
+model = load_model('D:\model.h5')
 y_predict = model.predict(test_data, batch_size=5)
 
 count = 0
 count_1 = 0
 count_2 = 0
 
-# Generate a random number that follows a Powerlaw distribution.
+# Sample a number from a power-law distribution.
 # ================================== Powerlaw Function ==========================
 
 
@@ -84,7 +84,7 @@ def test_fun2(last_num):
 # ================================== Powerlaw Function ===========================
 
 
-# Modify the prediction.
+# Sample a number from a Poisson distribution.
 # ================================== modify ======================================
 
 for si in range(0, len(y_predict)):
@@ -95,14 +95,14 @@ for si in range(0, len(y_predict)):
 # ================================== modify ======================================
 
 
-ss = 'D://dududu//model_related//dblp_data//predict//LSTM1//dblp-rels-retag-test-predict-' + str(1 + 2000) + '_curr_history_15.txt'
+ss = 'D://dblp-rels-retag-test-predict-' + str(1 + 2000) + '_curr_history_15.txt'
 fout = open(ss, 'w')
 for ii in range(len(y_predict)):
     fout.write('%f\n' % y_predict[ii][0])
 
 fout.close()
 
-ss = 'D://dududu//model_related//dblp_data//predict//LSTM1//dblp-rels-retag-test-ture-' + str(1 + 2000) + '_curr_history_15.txt'
+ss = 'D://dblp-rels-retag-test-ture-' + str(1 + 2000) + '_curr_history_15.txt'
 fout = open(ss, 'w')
 for ii in range(len(test_targets)):
     fout.write('%f\n' % test_targets[ii])
@@ -139,14 +139,14 @@ for ll in range(2, len(raw_data_null[0]) - 11):
     # ================================== modify ======================================
 
 
-    ss = 'D://dududu//model_related//dblp_data//predict//LSTM1//dblp-rels-retag-test-predict-' + str(ll + 2000) + '_curr_history_15.txt'
+    ss = 'D://dblp-rels-retag-test-predict-' + str(ll + 2000) + '_curr_history_15.txt'
     fout = open(ss, 'w')
     for ii in range(len(y_predict)):
         fout.write('%f\n' % y_predict[ii][0])
 
     fout.close()
 
-    ss = 'D://dududu//model_related//dblp_data//predict//LSTM1//dblp-rels-retag-test-ture-' + str(ll + 2000) + '_curr_history_15.txt'
+    ss = 'D://dblp-rels-retag-test-ture-' + str(ll + 2000) + '_curr_history_15.txt'
     fout = open(ss, 'w')
     for ii in range(len(test_targets)):
         fout.write('%f\n' % test_targets[ii])
